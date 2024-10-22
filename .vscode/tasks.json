@@ -1,0 +1,35 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Assembly",
+            "type": "shell",
+            "command": "nasm",
+            "args": [
+                "${file}",
+                "-o", "${fileDirname}/${fileBasenameNoExtension}.com",
+                "-l", "${fileDirname}/${fileBasenameNoExtension}.lst"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Link Assembly",
+            "type": "shell",
+            "command": "ld",
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}.o",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ]
+        },
+        {
+            "label": "Run Assembly",
+            "type": "shell",
+            "command": "${fileDirname}/${fileBasenameNoExtension}"
+        }
+    ]
+}
