@@ -1,0 +1,46 @@
+3.3 abschließende Bemerkungen
+	- z.T. weiter Adressierungsarten unterstützt //Nicht beim 8086
+	- doppelt indirekte 
+	- indirekt mit Postinkrement / Prädekrement 
+		- zusätzlich zu Speicherzugriff wird 
+		  Adressregister vorher dekrementiert 
+		  oder danach inkrementiert
+	-komplexe Adressierungsarten lassen sich durch einfache nach bilden 
+		z.B. MOV AL[BX - 17] => SUB BX, 17
+								MOV AL, [BX]
+								
+			vorteil: gut für den Programmierer
+			nachteil: CPU Komplizierter + langsamer 
+	- Vorasuberechnung effektiver Adrese mittels LEA Zielregitser, [Adressausdruck]
+	
+4. Steuerung des Programmablaufs 
+	bisher: linear Programmablauf
+	
+	nicht linearer Ablauf wünschenswert:
+		- Reservierung von Datenbereichen 
+		- kurze zyklische Programme 
+		- Bearbeitung ausgewählter Programmabschnitte
+		- Wederverwendung von Programmsequenzen
+		 --> Technische Mittel: - Sprünge
+								- Unterprogramme
+	
+	4.1 Sprünge
+		- Anweisung zur Programmfortsetzung 
+		  ab angegebener Adresse
+		
+		4.1.1 unbedingter Sprung(unconditional jump)
+			
+			JMP adr; //Programmfortsetzung ab Adresse adr/[BX]
+			JMP	bx;
+			
+			technische Ausführung: PC := adr Oder BX
+			
+			Bsp.:
+						ORG 100H
+				Start:	IN  AL, Schalter 
+						OUT LED, AL
+						JMP Start oder JMP 100H
+		
+		4.1.2 bedingter Sprung(conditional jump)
+		Sprungausführung bei erfüllter Bedingung
+			- 
