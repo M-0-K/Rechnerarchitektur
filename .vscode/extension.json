@@ -2,8 +2,8 @@
 
     "recommendations": [
 
-"mathematic.vscode-pdf"
-"yzhang.markdown-all-in-one"
+        "mathematic.vscode-pdf"
+        "yzhang.markdown-all-in-one"
         
     ],
     "unwantedRecommendations": [
