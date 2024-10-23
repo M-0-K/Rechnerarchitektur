@@ -1,3 +1,7 @@
+# Compiler
+*.com
+*.lst
+
 # Prerequisites
 *.d
 
