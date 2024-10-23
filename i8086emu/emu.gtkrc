@@ -1,0 +1,13 @@
+style "plain"
+{
+	GtkButton::inner-border = { 0, 0, 0, 0 }
+}
+
+style "plainToggle"
+{
+	GtkToggleButton::inner-border = { 0, 0, 0, 0 }
+}
+
+class "GtkButton" style "plain"
+class "GtkToggleButton" style "plainToggle"
+

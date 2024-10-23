@@ -4,7 +4,7 @@
         {
             "label": "Build Assembly",
             "type": "shell",
-            "command": "nasm",
+            "command": "nasm-2.16.03/nasm.exe",
             "args": [
                 "${file}",
                 "-o", "${fileDirname}/${fileBasenameNoExtension}.com",

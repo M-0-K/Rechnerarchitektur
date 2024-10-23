@@ -1,0 +1,22 @@
+     1                                  
+     2                                          ORG 100H
+     3                                  ;----------------------------------------
+     4                                  
+     5                                  ;Das erste Praktikum
+     6                                  
+     7                                  start:	
+     8 00000000 E400                            in al,0		;Schalterstellung einlesen
+     9 00000002 E600                            out 0,al        ;  und auf LED-Zeile ausgeben
+    10                                  
+    11 00000004 B9FFFF                          mov cx,-1    	;Zaehler f�r Zeitschleife laden
+    12 00000007 E2FE                    schl1:  loop schl1      ;	Schritt1: Dekrementiere <CX>
+    13                                                          ;	Schritt2: Sprung, wenn <CX> ungleich 0
+    14 00000009 B000                            mov al,0
+    15 0000000B E600                            out 0,al        ;alle LEDs ausschalten
+    16                                  
+    17 0000000D B9FFFF                          mov cx,-1
+    18 00000010 E2FE                    schl2:  loop schl2
+    19                                  
+    20 00000012 EBEC                    		jmp start        	; Endlosschleife
+    21                                  
+    22                                  ;----------------------------------------
