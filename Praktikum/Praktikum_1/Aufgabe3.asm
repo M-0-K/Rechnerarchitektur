@@ -1,15 +1,17 @@
 
 org 100h
 ; ------------------------------------------------------------------------------------
-start:  mov al, 07  ;0000 0111 -> 7
+;Eine einzelne leuchtende LED soll in der LED-Reihe fortlaufend sichtbar von links nach rechts „wandern“. 
+
+
+start:  ;0101 0101 -> 0x55
+mov al, 0x80 
+unterwegs:
 out 0,al ; und auf die LED-Zeile ausgeben
 mov cx,-1 ; Zaehler für Zeitschleife laden
 schl1: loop schl1 ; loop: zwei Befehle in einem
-                  ; Schritt1: Dekrementiere <CX>
-                  ; Schritt2: Sprung, wenn <CX> ungleich 0
-mov al,0
-out 00,al ; alle LED „ausschalten“
-mov cx,-1
-schl2: loop schl2
+shr al, 1
+cmp al, 0x00
+jne unterwegs
 jmp start ; Endlosschleife
 ; ------------------------------------------------------------------------------------
