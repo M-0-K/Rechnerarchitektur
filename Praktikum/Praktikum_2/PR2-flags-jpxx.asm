@@ -10,12 +10,12 @@ start:
 ; entsprechenden Befehle beeinflusst werden, Ueberpruefen Sie
 
           mov  ax,0281h
-          cmp  al,0c0h
-          test al,7eh
-          or   al,18h
-          and  al,0fh
-          rol  ah,1
-          rol  ah,1
+          cmp  al,0c0h ; 81h cmp 0h -> CF=0, PF=0, ZF=0, SF=0
+          test al,7eh  ; 81h test 7eh -> CF=0, PF=1, ZF=1, SF=0
+          or   al,18h  ; 81h or 18h -> CF=0, PF=1, ZF=0, SF=1
+          and  al,0fh  ; 81h and 0fh -> CF=0, PF=1, ZF=0, SF=0
+          rol  ah,1    ; 81h rol 1 -> CF=0, PF=1, ZF=0, SF=0
+          rol  ah,1    ; 81h rol 1 -> CF=0, PF=1, ZF=0, SF=0
 
 eingc:    in   al,0    ; Schalter abfragen
           cmp  al,9
