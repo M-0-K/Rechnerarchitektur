@@ -23,7 +23,7 @@ eingc:    in   al,0    ; Schalter abfragen
 
 eingt:    in   al,0    ; Schalter abfragen
           test al,81h
-          jnz  eingt   ; bei welchen Eingabewerten wird gesprungen ?
+          jnz  eingt   ; bei welchen abc wird gesprungen ?????
 
           nop
           jmp start
