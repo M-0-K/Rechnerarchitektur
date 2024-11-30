@@ -1,5 +1,22 @@
 
 # Praktikum 2: 8086 - Flags und Bedingte Sprünge
+## Inhaltsverzeichnis
+- [Praktikum 2: 8086 - Flags und Bedingte Sprünge](#praktikum-2-8086---flags-und-bedingte-sprünge)
+  - [Inhaltsverzeichnis](#inhaltsverzeichnis)
+  - [Vorbereitung](#vorbereitung)
+    - [1. Flags](#1-flags)
+    - [2. Befehle CMP - TEST](#2-befehle-cmp---test)
+    - [3. Bedingte Sprünge](#3-bedingte-sprünge)
+    - [4. welche Zahlenwerte Erfüllen die Sprungbedingung](#4-welche-zahlenwerte-erfüllen-die-sprungbedingung)
+    - [5. Vorbereitung auf Testat!!](#5-vorbereitung-auf-testat)
+  - [Beispiel](#beispiel)
+  - [Programmier Aufgaben](#programmier-aufgaben)
+    - [p31](#p31)
+    - [p32](#p32)
+    - [p33](#p33)
+    - [p34](#p34)
+    - [p35](#p35)
+
 
 ## Vorbereitung 
 
@@ -58,7 +75,9 @@ jnc m1 // Jump if not Carry -> If(CF=0)
 ### 5. Vorbereitung auf Testat!! 
 
 ```asm
-
+in al, 0
+and al,1 
+jnz EINS
 ```
 
 ## Beispiel
@@ -73,16 +92,22 @@ Alle LEDs sollen nur dann leuchten, wenn der Schalter S0 eingeschaltet ist.
 
 ### p32
 Auf der LED-Reihe soll eine einzelne LED fortlaufend hin und her „wandern“.
+
+@import "p32.asm"
 ### p33
 Alle LEDs sollen sichtbar blinken, wenn der Schalter S0 eingeschaltet ist und der 
 Schalter S7 soll zusätzlich die Blinkfrequenz steuern (schnell und langsam):
 ofür die Auswertung beider Schalter soll nur einmal eingelesen werden
 odas Programm soll unabhängig von der Stellung der anderen Schalter funktionieren
 oentwerfen Sie zu Beginn einen Programmablaufplan und setzen diesen um.
-## p34
+@import "p33.asm"
+### p34
 Auf den Stellen 3 und 4 der 7-Segment-Anzeige soll der Zustand der Schalter S3 und 
 S4 (jeweils „0“ oder „I“) angezeigt werden.
+@import "p34.asm"
 ### p35
 Mit der LED-Zeile soll das Blinklicht eines Autos (alle Möglichkeiten) nachgestellt 
 werden. Vermeiden Sie durch eine entsprechende Planung des Programmablaufs 
 Spaghetti-Code!
+
+@import "p35.asm"
