@@ -1,0 +1,33 @@
+     1                                  
+     2                                  	  ORG 100H
+     3                                  ;----------------------------------------
+     4                                  
+     5                                  ; PRAKTIKUM 3:
+     6                                  ; Flags und bedingte Spruenge
+     7                                  
+     8                                  start:
+     9                                  ; Sagen Sie voraus, welche Flags (CF-ZF-PF-SF) und wie durch die
+    10                                  ; entsprechenden Befehle beeinflusst werden, Ueberpruefen Sie
+    11                                                          ; CF ZF PF SF
+    12 00000000 B88102                            mov  ax,0281h ; -  -  -  -
+    13 00000003 3CC0                              cmp  al,0c0h  ; 0  0  1  0
+    14 00000005 A87E                              test al,7eh   ; 0  1  1  0
+    15 00000007 0C18                              or   al,18h   ; 0  0  1  1
+    16 00000009 240F                              and  al,0fh   ; 0  0  1  0
+    17 0000000B D0C4                              rol  ah,1     ; 0  -  -  -
+    18 0000000D D0C4                              rol  ah,1     ; 0  -  -  -
+    19                                  
+    20 0000000F E400                    eingc:    in   al,0     ; Schalter abfragen
+    21 00000011 3C09                              cmp  al,9
+    22 00000013 72FA                              jc  eingc     ; bei welchen Eingabewerten wird gesprungen ?
+    23                                                          ; bei allen Werten kleiner 9
+    24                                  
+    25 00000015 E400                    eingt:    in   al,0     ; Schalter abfragen
+    26 00000017 A881                              test al,81h
+    27 00000019 75FA                              jnz  eingt    ; bei welchen Eingabewerten wird gesprungen ?
+    28                                                          ; wenn mindestens MSB oder LSB gesetzt ist
+    29                                  
+    30 0000001B 90                                nop
+    31 0000001C EBE2                              jmp start
+    32                                  
+    33                                  ;----------------------------------------

@@ -8,22 +8,24 @@
 start:
 ; Sagen Sie voraus, welche Flags (CF-ZF-PF-SF) und wie durch die
 ; entsprechenden Befehle beeinflusst werden, Ueberpruefen Sie
+                        ; CF ZF PF SF
+          mov  ax,0281h ; -  -  -  -
+          cmp  al,0c0h  ; 0  0  1  0
+          test al,7eh   ; 0  1  1  0
+          or   al,18h   ; 0  0  1  1
+          and  al,0fh   ; 0  0  1  0
+          rol  ah,1     ; 0  -  -  -
+          rol  ah,1     ; 0  -  -  -
 
-          mov  ax,0281h
-          cmp  al,0c0h
-          test al,7eh
-          or   al,18h
-          and  al,0fh
-          rol  ah,1
-          rol  ah,1
-
-eingc:    in   al,0    ; Schalter abfragen
+eingc:    in   al,0     ; Schalter abfragen
           cmp  al,9
-          jc  eingc    ; bei welchen Eingabewerten wird gesprungen ?
+          jc  eingc     ; bei welchen Eingabewerten wird gesprungen ?
+                        ; bei allen Werten kleiner 9
 
-eingt:    in   al,0    ; Schalter abfragen
+eingt:    in   al,0     ; Schalter abfragen
           test al,81h
-          jnz  eingt   ; bei welchen Eingabewerten wird gesprungen ?
+          jnz  eingt    ; bei welchen Eingabewerten wird gesprungen ?
+                        ; wenn mindestens MSB oder LSB gesetzt ist
 
           nop
           jmp start
