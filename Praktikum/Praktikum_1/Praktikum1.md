@@ -93,4 +93,45 @@ b. Direkte Ansteuerung der 7-Segment-Anzeige
 
 ## Einfühurng in den Emulator
 - OP-Code des Befehls OUT 0, AL 
-  - E600 
+  - 0000000B E600                **out** 00,al ; alle LED „ausschalten“
+- die (relative) Adresse des Befehls MOV CX,-1  
+  - 0000000D B9FFFF                  mov **cx**,-1 
+- den OP-Code des Befehls MOV CX,-1   
+  - 0000000D B9FFFF                  **mov** cx,-1 
+
+
+### Zeigen Sie im Fenster MEMORY den Speicher ab der Adresse 0000:0100 an, was ist dort abgelegt? 
+! [MEMORY](/bilder/MEMORY.png)
+Vergleichen Sie mit dem List-File. 
+Ermitteln Sie aus DISASSEMBLER und MEMORY 
+- die Adresse des Befehls MOV AL,0   
+  - **00000009** B000 
+- den OP-Code des Befehls MOV AL,0   
+  - 00000009 **B000** 
+- die Inhalte der Adressen 010e / 010f   
+```asm
+                  0e  0f
+0000:0100 ...     ff  ff
+```
+- interpretieren Sie die Bedeutung dieser Werte  
+  - **noch offen**
+
+#### Sie nach der 10. Befehlsausführung an 
+- den Registerinhalt von CX     
+  - **noch offen**
+- den Inhalt des Befehlszählers / Instruction-Pointers  
+  - **noch offen**
+ 
+
+1. p21: Auf der LED-Reihe sollen drei nebeneinanderliegende LED sichtbar blinken.
+```asm
+
+```
+
+2. p22: Auf der LED-Reihe soll abwechselnd sichtbar zwischen den LEDs 6-4-2-0 und 7-5-3-1 
+umgeschaltet werden.  
+1. p23: Eine einzelne leuchtende LED soll in der LED-Reihe fortlaufend sichtbar von links 
+nach rechts „wandern“. 
+1. p24: Löschen Sie die gesamte 7-Segment-Anzeige. Danach soll auf einer Stelle dieser 
+Anzeige sichtbar abwechselnd eine „0“ und eine „I“ angezeigt werden. 
+Führen Sie die funktionsfähigen Programme vor. 
