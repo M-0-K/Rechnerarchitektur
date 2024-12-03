@@ -1,3 +1,66 @@
+# Gliederung
+- [Gliederung](#gliederung)
+- [1. Einführung](#1-einführung)
+  - [1.1 Was ist Rechenarchitektur](#11-was-ist-rechenarchitektur)
+  - [1.2 Geschichtliche Entwicklung](#12-geschichtliche-entwicklung)
+  - [1.3 Grundprinzip der Datenverarbeitung](#13-grundprinzip-der-datenverarbeitung)
+  - [1.4 Rechnersysteme](#14-rechnersysteme)
+    - [1.4.1 Grundlegender Aufbau](#141-grundlegender-aufbau)
+- [2. Softwarearchitektur](#2-softwarearchitektur)
+- [3. Rechner aus Programmierersicht](#3-rechner-aus-programmierersicht)
+  - [3.1 Speicher und I/O](#31-speicher-und-io)
+  - [3.2 Registersatz und Arithmetisch-logische Einheit (ALU)](#32-registersatz-und-arithmetisch-logische-einheit-alu)
+- [4. Befehle und Adressierungsarten](#4-befehle-und-adressierungsarten)
+  - [4.1 Befehlssatz im Überblick](#41-befehlssatz-im-überblick)
+  - [4.2 Befehlsformate und Adressmodelle](#42-befehlsformate-und-adressmodelle)
+  - [4.3 Adressierungsarten](#43-adressierungsarten)
+  - [3.3 Abschließende Bemerkungen](#33-abschließende-bemerkungen)
+- [4. Steuerung des Programmablaufs](#4-steuerung-des-programmablaufs)
+  - [4.1 Sprünge](#41-sprünge)
+    - [4.1.1 Unbedingter Sprung (unconditional jump)](#411-unbedingter-sprung-unconditional-jump)
+    - [4.1.2 Bedingter Sprung (conditional jump)](#412-bedingter-sprung-conditional-jump)
+      - [Sprungbedingung](#sprungbedingung)
+        - [wichtige Sprünge](#wichtige-sprünge)
+        - [Warum Falgs als Sprungbedingung](#warum-falgs-als-sprungbedingung)
+          - [Vorteil](#vorteil)
+          - [Nachteil](#nachteil)
+    - [4.1.3 Realisierung von Hochsprach - Programmstrukturen](#413-realisierung-von-hochsprach---programmstrukturen)
+      - [Ergänzung zu Mehrfachtests ub Hochsprachen](#ergänzung-zu-mehrfachtests-ub-hochsprachen)
+        - [Realisierung](#realisierung)
+    - [4.2 Unterprogramme](#42-unterprogramme)
+      - [Befehlssequenz](#befehlssequenz)
+      - [Vorteile](#vorteile)
+      - [Nachteil](#nachteil-1)
+    - [4.2.1 Stack (Stapel)](#421-stack-stapel)
+      - [Allgemeine Datenstruktur](#allgemeine-datenstruktur)
+      - [FIFO (First In, First Out)](#fifo-first-in-first-out)
+      - [LIFO (Last In, First Out)](#lifo-last-in-first-out)
+    - [4.2.2 Stack an Prozessoren](#422-stack-an-prozessoren)
+      - [FIFO Struktur in HW durch Prozessor unterstützt](#fifo-struktur-in-hw-durch-prozessor-unterstützt)
+      - [Zugriff auf Stackelemente](#zugriff-auf-stackelemente)
+      - [Beispiel Blinklicht](#beispiel-blinklicht)
+      - [Ablauf von CALL / RET](#ablauf-von-call--ret)
+        - [CALL adr](#call-adr)
+        - [RET](#ret)
+- [5. Architekturen für moderne Workstations](#5-architekturen-für-moderne-workstations)
+  - [5.1 Mikroprozessoren](#51-mikroprozessoren)
+    - [aktuelle Einsatztrends](#aktuelle-einsatztrends)
+      - [Workstation](#workstation)
+      - [Embedded Control](#embedded-control)
+      - [Digitaler Signalprozessor](#digitaler-signalprozessor)
+  - [5.2 Betriebssysteme](#52-betriebssysteme)
+    - [5.2.1 Multitasking](#521-multitasking)
+    - [5.2.2 erweiterte Aufgaben des Betriebssystems](#522-erweiterte-aufgaben-des-betriebssystems)
+    - [5.2.3 Anforderungen aus dem Anwendungsumfeld](#523-anforderungen-aus-dem-anwendungsumfeld)
+      - [wesentliche Erhöhung der Verarbeitungsleistung](#wesentliche-erhöhung-der-verarbeitungsleistung)
+      - [Isolation der Anwenderprogramme](#isolation-der-anwenderprogramme)
+      - [Speicherverwaltung](#speicherverwaltung)
+      - [dynamische Addressbindung *(Linking)*](#dynamische-addressbindung-linking)
+- [6. Erhöhung der Verarbeitungsleistung](#6-erhöhung-der-verarbeitungsleistung)
+  - [6.1 Verarbeitungsleistung](#61-verarbeitungsleistung)
+  - [6.2 Leistungsbewertung](#62-leistungsbewertung)
+    - [benötigte Programmlaufzeit](#benötigte-programmlaufzeit)
+      - [gängige Leistungsmaße](#gängige-leistungsmaße)
 
 # 1. Einführung
 ## 1.1 Was ist Rechenarchitektur
@@ -179,7 +242,7 @@ _siehe Befehlsliste S.13_
 - behindern Parallelisierung Befehlsbearbeitung 
 
 ### 4.1.3 Realisierung von Hochsprach - Programmstrukturen 
-- Umsetzung **auschlißlich** mittels Sprüngen
+- Umsetzung **ausschlißlich** mittels Sprüngen
 - Vorgehen am Beispiel einer Entscheidung 
    
     1. Umformung in eine Ablaufstruktur 
@@ -324,3 +387,96 @@ again:  SUB CX, 1       ;60 000
     PC := [SP]
     SP := SP + size(PC)
 ```
+
+# 5. Architekturen für moderne Workstations
+## 5.1 Mikroprozessoren
+### aktuelle Einsatztrends
+#### Workstation
+  - grafische Oberflächen
+  - parallel ablaufende Applikationen
+  - hohe geforderte Systemleistung
+  - großer Speicherraum
+  - hohe Systemstabilität
+#### Embedded Control
+  - Einsatz für Steuerungszwecke
+  - breites Einsatzspektrum
+  - kompakt
+  - stromarm
+  - kostenoptimal
+  - hohe Zuverlässigkeit
+  - kurze Reaktionszeiten
+#### Digitaler Signalprozessor
+  - numerische Verarbeitung analoger Signale
+  - einfache Algorithmen
+  - moderater Speicherbedarf
+  - sehr kurze Verarbeitungszeiten
+  - hohe Rechengenauigkeit (16...48 Bit)
+
+## 5.2 Betriebssysteme
+### 5.2.1 Multitasking
+  - *quasi* gleichzeitige Bearbeitung mehrerer Tasks auf einem Prozessor
+  - mehrere Tasks mit *Code, Daten* und *Stack* gleichzeitig im Speicher
+  - Taskwechsel wir durch Betriebssystem vermittelt
+  - 
+### 5.2.2 erweiterte Aufgaben des Betriebssystems
+ - Zuweisung von Speicher zu Task
+ - Durchführung Taskwechsel
+ - Koordinierung von Zugriffswünschen auf Systemressourcen
+ - Vermittlung von Interprozesskommunikation
+ - zentrale Verwaltung der grafischen Oberfläche
+ - Gewährleistung der Stabilität des Gesamtsystems
+ - 
+### 5.2.3 Anforderungen aus dem Anwendungsumfeld
+#### wesentliche Erhöhung der Verarbeitungsleistung
+ - Verwaltungsoverhead Betriebssystem
+ - Multitasking
+#### Isolation der Anwenderprogramme
+ - a) gegeneinander und b) gegenüber dem Betriebssystem
+ - Fehlerhafte Programme dürfen nur sich selbst beeinflussen
+#### Speicherverwaltung
+ - Zuweisung freier Speicherbereiche für Code, Daten und stack
+ - Verhinderung von Fragmentation
+ - Unterstützung von *virtuellem* Speicher
+#### dynamische Addressbindung *(Linking)*
+ - Code muss zur Laufzeit an aktuell belegten Addressbereich gebunden werden
+
+# 6. Erhöhung der Verarbeitungsleistung
+## 6.1 Verarbeitungsleistung
+ - hat zwei Komponenten
+   Datendurchsatz * Verarbeitungsgeschwindigkeit
+ - Möglichkeiten zur Steigerung
+   - schnellere Befehlsbearbeitung - Erhöhung der Taktfrequenz
+   - Vergrößerung der Verarbeitungsbreite - 8 ... 16 ... 32 ... 64 Bit
+   - Spezialisierung - Abkehr vom Universalprozessor, applikationsspezifische Prozessoren
+   - Parallelverarbeitung - Problembearbeitung durch mehrere Prozessoren
+
+## 6.2 Leistungsbewertung
+### benötigte Programmlaufzeit
+#### gängige Leistungsmaße
+ - LinPAC - für Vergleich geeignet
+ - MIPS
+ - GFLOPS
+ - Dhrystone
+ - Whetstone
+ - SpecInt - für Vergleich geeignet
+ - SpecFP - für Vergleich geeignet
+
+**Benchmarks => einzig reale Vergleichsbasis unterschiedlicher Systeme**
+
+Zeit zur Ausführung eines Befehls mit *CPI* Takten pro Befehl bei einer Frequenz von f<sub>Clock</sub>
+$$
+t_{\text{Befehl}} = \text{CPI} \cdot \tau_{\text{Clock}} = \frac{\text{CPI}}{f_{\text{Clock}}}
+$$
+Zeit zur Ausführung eines Programms mit n Befehlen:
+$$
+T_{\text{gesamt}} = \sum_{i=1}^{n} t_{\text{Befehl}_i} = \frac{1}{f_{\text{Clock}}} \sum_{i=1}^{n} \text{CPI}_i
+$$
+Ist *H* die absolute Häufigkeit von befehlen mit gleichem CPI, so erhält man:
+$$
+T_{\text{ges}} = \frac{1}{f_{\text{Clock}}} \sum_{j=1}^{m} \text{CPI}_j \cdot H_j \quad \text{mit} \quad n = \sum_{j=1}^{m} H_j
+$$
+Kennt man nun die relativen Häufigkeiten
+
+mit CPI(quer) als mittlere Anzahl Takte pro Befehl
+
+ergibt sich schließlich
