@@ -475,8 +475,12 @@ Ist *H* die absolute Häufigkeit von befehlen mit gleichem CPI, so erhält man:
 $$
 T_{\text{ges}} = \frac{1}{f_{\text{Clock}}} \sum_{j=1}^{m} \text{CPI}_j \cdot H_j \quad \text{mit} \quad n = \sum_{j=1}^{m} H_j
 $$
-Kennt man nun die relativen Häufigkeiten
-
-mit CPI(quer) als mittlere Anzahl Takte pro Befehl
-
+Kennt man nun die relativen Häufigkeiten $h = \frac{H}{n}$, ergibt sich
+$$
+T_{\text{ges}} = \frac{n}{f_{\text{Clock}}} \sum_{j=1}^{m} \text{CPI}_j \cdot h_j
+$$
+mit $\overline{\text{CPI}}$ als mittlere Anzahl Takte pro Befehl
+$$
+\overline{\text{CPI}} = \sum_{j=1}^{m} \text{CPI}_j \cdot h_j
+$$
 ergibt sich schließlich
