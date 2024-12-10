@@ -61,6 +61,16 @@
   - [6.2 Leistungsbewertung](#62-leistungsbewertung)
     - [benötigte Programmlaufzeit](#benötigte-programmlaufzeit)
       - [gängige Leistungsmaße](#gängige-leistungsmaße)
+    - [6.3.3 Superskalare Prozessoren](#633-superskalare-prozessoren)
+      - [6.3.3.1 Pipelining](#6331-pipelining)
+        - [6.3.3.1.1 Idealschema:](#63311-idealschema)
+        - [6.3.3.1.2 Probleme der Umsetzung](#63312-probleme-der-umsetzung)
+      - [6.3.3.1.3 naiver Ansatz](#63313-naiver-ansatz)
+      - [6.3.3.1.4 besserer Ansatz](#63314-besserer-ansatz)
+- [8. Speichersubsystem](#8-speichersubsystem)
+  - [8.1 Einführung](#81-einführung)
+  - [8.2 Speicheraufbau und Speicherarten](#82-speicheraufbau-und-speicherarten)
+  - [8.3 Cache](#83-cache)
 
 # 1. Einführung
 ## 1.1 Was ist Rechenarchitektur
@@ -475,8 +485,67 @@ Ist *H* die absolute Häufigkeit von befehlen mit gleichem CPI, so erhält man:
 $$
 T_{\text{ges}} = \frac{1}{f_{\text{Clock}}} \sum_{j=1}^{m} \text{CPI}_j \cdot H_j \quad \text{mit} \quad n = \sum_{j=1}^{m} H_j
 $$
-Kennt man nun die relativen Häufigkeiten
-
-mit CPI(quer) als mittlere Anzahl Takte pro Befehl
-
+Kennt man nun die relativen Häufigkeiten $h=\frac{H}{n}$, so ergibt sich:
+$$
+T_{\text{ges}} = \frac{n}{f_{\text{Clock}}} \sum_{j=1}^{m} \text{CPI}_j \cdot h_j
+$$
+mit $\overline{\text{CPI}}$ als <span style="color: green;">mittlere Anzahl Takte pro Befehl</span>
+$$
+\overline{\text{CPI}} = \sum_{j=1}^{m} \text{CPI}_j \cdot h_j
+$$
 ergibt sich schließlich
+$$
+T_{\text{ges}} = \frac{n}{f_{\text{Clock}}} \cdot \overline{\text{CPI}}
+$$
+
+### 6.3.3 Superskalare Prozessoren
+#### 6.3.3.1 Pipelining
+##### 6.3.3.1.1 Idealschema:
+- im Mittel wird 1 Befehl/Takt fertiggestellt (scheinbar $\overline{\text{CPI}}=1$)
+- Bearbeitung jedes einzelnen Befehls jedoch <span style="color: red">nicht schneller</span>!
+##### 6.3.3.1.2 Probleme der Umsetzung
+1. ungleich lange Teiloperationen
+2. Strukturengpässe (*Structural Hazards*)
+3. Datenabhängigkeiten (*Data Hazards*) aufeinanderfolgender Befehle
+4. Änderung des Programmflusses (*Control Hazards*)
+notwendige Maßnahmen:
+- <span style="color: blue">Pipeline Stall</span> - Einfügen von Leerlauftakten
+- <span style="color: blue">Pipeline Flush</span> - Leeren und Neubefüllen der Pipeline
+- durch technische und organisatorische Maßnahmen z.T. vermeidbar
+  - Änderung Befehlssatz
+  - Entflechtung der Abhängigkeiten
+  - zusätzliche Hardware
+
+#### 6.3.3.1.3 naiver Ansatz
+- 2 Pipelines
+- abwechselnd befüllt
+- erster Versuch => 1995 Intel <u>80586</u>
+- Probleme:
+  - großer Bedarf an Speicherbandbreite (Byte/Takt) für mehrere Befehle
+  - größerer Einfluss von Datenabhängigkeiten
+#### 6.3.3.1.4 besserer Ansatz
+- Abkehr vom strikten Pipelineprinzip
+- Befehle zentral einlesen
+- -> danach Verteilung an **spezi**alisierte Verarbeitungseinheiten/Execution Units
+- -> diese entscheiden selbstständig über Reihenfolge der Teilaufträge (Vorverarbeitung muss ok sein)
+
+# 8. Speichersubsystem
+## 8.1 Einführung
+- Einfluss auf VL -> 7.1
+- reale Situationen:
+  - CPU-Zugriff 64...192 Bit/Takt
+  - Speicherbreite 32...64 Bit
+  - HS-Speicher über langsamen Bus mit CPU verbunden 200...800MHz
+  - Speicherzugriff HS typisch 10...20ns
+
+## 8.2 Speicheraufbau und Speicherarten
+- F. 104ff.
+- **SRAM** - schnell, teuer, in CPU Registern verbaut
+- **DRAM** - langsamer, günstig, im Hauptspeicher verbaut
+- **RAS** - Row Access Shift / Zeile
+- **CAS** - Column Access Shift / Spalte
+
+## 8.3 Cache
+- F. 110ff.
+- **Chacheline** - enthält Kopie einer Folge aufeinanderfolgender Speicherzellen
+- **Tag** - Anfangsadresse des kopierten Speicherbereichs
