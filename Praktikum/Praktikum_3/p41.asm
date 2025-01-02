@@ -12,14 +12,14 @@ call write
 
 mov al, 00H
 
-; b.
-start:
-mov bx, 200H
-call write
-inc al
-jnc start
+;; b.
+;start:
+;mov bx, 200H
+;call write
+;inc al
+;jnc start
 
-call copy
+;call copy
 
 write: mov bx, 200H
 startwrite: mov [BX], al
@@ -27,11 +27,11 @@ inc bl
 jnc startwrite
 ret 
 
-copy: mov bx, 200H
-startcopy: mov dx, 300H
-mov cx, [bx]
-mov [dx], cx
-inc bl
-inc cl
-jnc startcopy
-ret
+;copy: mov bx, 200H
+;startcopy: mov dx, 300H
+;mov cx, [bx]
+;mov [dx], cx
+;inc bl
+;inc cl
+;jnc startcopy
+;ret
