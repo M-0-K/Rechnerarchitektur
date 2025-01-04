@@ -10,7 +10,7 @@ mov cx,-1
 schl1: loop schl1
 jnc l00pright
 
-ror al, 1ss
+ror al, 1
 l00pleft:
 out 0, al 
 ror al, 1

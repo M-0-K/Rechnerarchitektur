@@ -1,4 +1,6 @@
 # Rechnerarchitektur
+
+
  
 ## Empfohlene Extensions:
 - mathematic.vscode-pdf
