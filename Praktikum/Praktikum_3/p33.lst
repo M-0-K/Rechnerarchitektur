@@ -1,0 +1,17 @@
+     1                                          org 100H
+     2                                  
+     3                                  schalt: equ 0
+     4                                  
+     5 00000000 E400                    start:  in al,schalt
+     6 00000002 88C3                            mov bl,al           ; Schalterstellung in bl speichern
+     7 00000004 B0FF                            mov al,11111111b
+     8 00000006 F6C301                          test bl,00000001b   ; setzt zero flag wenn Schalter 0 gesetzt
+     9 00000009 7502                            jnz blink
+    10 0000000B EBF3                            jmp start
+    11                                  
+    12 0000000D E600                    blink:  out 0,al
+    13 0000000F F6D0                            not al
+    14 00000011 F6C380                          test bl,10000000b   ; setzt zero flag wenn Schalter 7 gesetzt
+    15 00000014 E2FE                    schl1:  loop schl1
+    16 00000016 E2FE                    schl2:  loop schl2
+    17 00000018 EBE6                            jmp start
