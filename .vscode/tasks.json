@@ -37,6 +37,48 @@
                 "kind": "build",
                 "isDefault": true
             }
+        },
+        {
+            "label": "Run WSL Assembly",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "nasm ${file} -o ${fileDirname}/${fileBasenameNoExtension}.com -l ${fileDirname}/${fileBasenameNoExtension}.lst"
+            ], 
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+        {
+            "label": "Run WSL Emulator",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "./bin/i8086gui ${fileDirname}/${fileBasenameNoExtension}.com"
+            ], 
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+
+        {
+            "label": "Run All WSL Tasks",
+            "dependsOn": [
+                "Run WSL Assembly",
+                "Run WSL Emulator"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [],
+            "detail": "Führt alle Aufgaben der Kette aus."
         }
     ]
 }
