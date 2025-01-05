@@ -1,0 +1,16 @@
+     1                                          org 100h
+     2                                  
+     3 00000000 B001                    start:  mov al,1
+     4                                  
+     5 00000002 E2FE                    left:   loop left
+     6 00000004 E600                            out 0,al
+     7 00000006 D0E0                            shl al,1
+     8 00000008 A87F                            test al,7fh
+     9 0000000A 75F6                            jnz left
+    10                                  
+    11 0000000C E2FE                    right:  loop right
+    12 0000000E E600                            out 0,al
+    13 00000010 D0E8                            shr al,1
+    14 00000012 A8FE                            test al,11111110b
+    15 00000014 75F6                            jnz right
+    16 00000016 EBEA                            jmp left

@@ -1,0 +1,17 @@
+     1                                          ORG 100H
+     2                                  
+     3                                  schalt: equ 0
+     4                                  
+     5 00000000 E400                    start:  in al,schalt
+     6 00000002 D0E8                            shr al,1
+     7 00000004 7202                            jc on
+     8 00000006 7308                            jnc off
+     9                                  
+    10 00000008 B000                    on:     mov al,0
+    11 0000000A F6D0                            not al
+    12 0000000C E600                            out 0,al
+    13 0000000E EBF0                            jmp start
+    14                                  
+    15 00000010 B000                    off:    mov al,0
+    16 00000012 E600                            out 0,al
+    17 00000014 EBEA                            jmp start

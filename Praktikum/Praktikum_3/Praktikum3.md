@@ -1,4 +1,4 @@
-# Praktikum 2
+# Praktikum 3
 
 ## Vorbereitung
 1. Was sind Flags. Wann und nach welchen Regeln werden CF, ZF, PF und SF beeinflusst?

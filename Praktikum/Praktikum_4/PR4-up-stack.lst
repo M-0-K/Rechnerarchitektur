@@ -1,0 +1,42 @@
+     1                                  
+     2                                  ORG 100H
+     3                                  
+     4                                  ; UNTERPROGRAMME UND STACK
+     5                                  
+     6                                  ; Beschreiben Sie den Verlauf des Stackbereiches !
+     7                                  ; Auf welchen Adressen werden welche Werte zu
+     8                                  ;   welchem Zweck abgelegt ?
+     9                                  ; Beobachten Sie den Stackpointer und den Stack!
+    10                                  ; (Fenster Register und Memory)
+    11                                  
+    12                                  schalt:	equ 0	; Adresse Schalter
+    13                                  
+    14 00000000 B83412                  start:	mov ax,1234h
+    15 00000003 BB0080                  		mov bx,8000h
+    16 00000006 E80800                  		call spwr
+    17 00000009 89DE                    		mov si,bx
+    18 0000000B 89C7                    		mov di,ax
+    19 0000000D EBF1                    		jmp start
+    20                                  
+    21 0000000F 0000                    buf:	db 0, 0
+    22                                  
+    23 00000011 50                      spwr:	push ax
+    24 00000012 53                      		push bx
+    25 00000013 BB[0F00]                		mov bx,buf
+    26 00000016 E400                    		in al,schalt
+    27 00000018 8807                    		mov [bx],al
+    28 0000001A E80B00                  		call zeit
+    29 0000001D E400                    		in al,schalt
+    30 0000001F 884701                  		mov [bx+1],al
+    31 00000022 E80300                  		call zeit
+    32 00000025 5B                      		pop bx
+    33 00000026 58                      		pop ax
+    34 00000027 C3                      		ret	
+    35                                  	
+    36                                  	
+    37 00000028 51                      zeit:	push cx
+    38 00000029 31C9                    		xor cx,cx
+    39 0000002B E2FE                    schl:	loop schl
+    40 0000002D 59                      		pop cx
+    41 0000002E C3                      		ret
+    42                                  
