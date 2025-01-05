@@ -22,18 +22,18 @@ anz1:   equ 92h
 start:
 		;Durch welchen Zahlenwert wird beim Uebersetzen der 
 		;Variablenname ersetzt?
-		mov al,[vari8a]
-		not al
-		mov [vari8a],al
+		mov al,[vari8a] 	;  55h -> 0x140 in der Zelle ist der Wert von vari8a gespeichert
+		not al 				; -> 0101 0101 -> 1010 1010  => 55h -> aah
+		mov [vari8a],al 	; vari8a = al;  => [0x140] = aa;
 
 		;Warum muss dem Uebersetzer in den folgenden Befehlen die
 		;Groesse des Operanden extra mitgeteilt werden?
-		mov byte [vari8b],88h
-		inc word [vari16]
+		mov byte [vari8b],88h 	; [0x141] = 88h 
+		inc word [vari16] 		; [0x142] = 35 (34++)
 	
 		mov bx,textanf
-		mov cl,[bx]
-		mov ch,[bx+3]
+		mov cl,[bx] 			; cl = 41 <= [bx] == [144]
+		mov ch,[bx+3]			
 		mov dl,[textend]
 
         mov al,01000000b
