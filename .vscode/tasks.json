@@ -4,11 +4,13 @@
         {
             "label": "Build Assembly",
             "type": "shell",
-            "command": "nasm-2.16.03/nasm.exe",
+            "command": "nasm",
             "args": [
                 "${file}",
-                "-o", "${fileDirname}/${fileBasenameNoExtension}.com",
-                "-l", "${fileDirname}/${fileBasenameNoExtension}.lst"
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.com",
+                "-l",
+                "${fileDirname}/${fileBasenameNoExtension}.lst"
             ],
             "group": {
                 "kind": "build",
@@ -29,7 +31,12 @@
         {
             "label": "Run Assembly",
             "type": "shell",
-            "command": "${fileDirname}/${fileBasenameNoExtension}"
+            "command": "${fileDirname}/${fileBasenameNoExtension}",
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }
