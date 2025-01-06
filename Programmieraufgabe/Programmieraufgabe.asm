@@ -34,7 +34,7 @@ ausgabe_rechts:     ; Anzeige Adresse (BX)
         pop AX      ; Adresse wieder in BX
         ret
 
-notFound:
+notFound:           ; Ausgabe ----
         mov AH,2
         mov DL,3
         mov BX,minus
@@ -46,7 +46,7 @@ tastatur:
         mov AH,0    ; INT Funktion
         INT 5       ; Status auslesen
         test AL,0xFF
-        jz return     ; Falls keine Taste gedrückt
+        jz return   ; Falls keine Taste gedrückt
         
         mov AH,1
         INT 5       ; Lese Tastenwert
