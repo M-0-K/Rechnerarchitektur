@@ -13,7 +13,7 @@
 ---
 ## Hauptroutine
 - Start
-- Startwert in `AL`
+- Startwert in `BX`
 - Main Loop:
   - Einlesen Schalter
     - ... Ausgabe
@@ -23,8 +23,8 @@
 ---
 ### Unterprogramme:
 - Einlesen Schalter
-  - Schalter auslesen -> `AH`
-  - Ausgabe `AH` im Display Links
+  - Schalter auslesen -> `AL`
+  - Ausgabe `AL` im Display Links
 - Einlesen Tastatur
   - Per Interrupt
   - G/E: Starte Suche von Anfang
@@ -34,11 +34,15 @@
   - Ausgabe `AH`
 - Ausgabe Rechts
   - Per Interrupt
-  - Ausgabe `AL`
+  - Ausgabe `BX`
 - Suche
   - Loop
-  - `inc AL`
-  - Compare `AL` `[AL]`
+  - `inc BX`
+  - Compare `AH` `[BX]`
     - Treffer: Stoppe Loop + Ausgabe Rechts
     - Kein Treffer: Weiterlaufen lassen
     - Falls Limit erreicht: Ausgabe Rechts `----`
+
+### Register Funktionen
+- AL - Schalterstellung
+- BX - Aktuelle Suchadresse
