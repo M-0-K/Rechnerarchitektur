@@ -4,7 +4,7 @@ main:
         mov BX, first
         mov AH, 0
         INT 6       ; Lösche Display
-        
+
 input:  call schalter
         call ausgabe_links
         call tastatur
@@ -52,14 +52,16 @@ tastatur:
         INT 5       ; Lese Tastenwert
 
         cmp AL,0x10 ; Enter
+        jnz go
+        mov BX,first                
+        jz suche
+
+go:     cmp AL,0x11 ; Go
+        jnz plus
         mov BX,first
         jz suche
 
-        cmp AL,0x11 ; Go
-        mov BX,first
-        jz suche
-
-        cmp AL,0x16 ; Plus
+plus:   cmp AL,0x16 ; Plus
         jz suche
 
         jmp return
