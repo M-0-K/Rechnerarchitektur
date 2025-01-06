@@ -2,13 +2,11 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Assembly",
+            "label": "Build Assembly Linux",
             "type": "shell",
             "command": "nasm",
             "args": [
                 "${file}",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.com",
                 "-l",
                 "${fileDirname}/${fileBasenameNoExtension}.lst"
             ],
@@ -33,6 +31,19 @@
             "type": "shell",
             "command": "${fileDirname}/${fileBasenameNoExtension}",
             "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Run WSL Assembly",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "nasm ${file} -o ${fileDirname}/${fileBasenameNoExtension}.com -l ${fileDirname}/${fileBasenameNoExtension}.lst"
+            ], 
             "group": {
                 "kind": "build",
                 "isDefault": true
