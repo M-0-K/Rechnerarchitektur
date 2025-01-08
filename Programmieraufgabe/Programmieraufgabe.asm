@@ -31,7 +31,8 @@ ausgabe_rechts:     ; Anzeige Adresse (BX)
         mov AH,3    ; INT Funktion
         mov DL,3    ; INT Displaystelle
         INT 6       ; Anzeige mit Interrupt
-        pop AX      ; Adresse wieder in BX
+        pop AX      ; Gesuchte Zahl wieder in BX
+        inc BX
         ret
 
 notFound:           ; Ausgabe ----
