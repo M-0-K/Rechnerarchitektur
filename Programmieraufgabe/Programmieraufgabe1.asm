@@ -10,7 +10,17 @@ plus_key: EQU 0x16   ; +
 
 call clear_display
 
-main:
+check_start:
+    ; Prüfen ob Taste gedrückt wurde und gedrückte Taste in AL speichern
+    MOV AH, 1
+    INT 5
+
+    ; Prüfen ob G oder E gedrückt wurde und ggf. Suche starten
+    CMP AL, start_key
+    JZ search_init
+    CMP AL, start_key2
+    JZ search_init
+
     JMP check_start
 
 clear_display:
@@ -32,19 +42,6 @@ read_switches:
     MOV [input_value], AL
     RET
 
-check_start:
-    ; Prüfen ob Taste gedrückt wurde und gedrückte Taste in AL speichern
-    MOV AH, 1
-    INT 5
-
-    ; Prüfen ob G oder E gedrückt wurde und ggf. Suche starten
-    CMP AL, start_key
-    JZ search_init
-    CMP AL, start_key2
-    JZ search_init
-
-    JMP main
-
 search_init:
     call read_switches
     call display_input
@@ -61,10 +58,8 @@ search_loop:
     CMP AL, [input_value]
     JZ search_found
 
-    ; nächste Adresse laden
+    ; nächste Adresse laden und Suche fortsetzen
     INC SI
-
-    ; andernfalls nächste Adresse prüfen
     JMP search_loop
 
 search_found:
@@ -74,7 +69,7 @@ search_found:
     MOV DL, 3
     INT 6
 
-wait_for_plus:
+wait_for_input:
     ; Warten auf Eingabe der Taste '+'
     MOV AH, 1
     INT 5
@@ -84,7 +79,7 @@ wait_for_plus:
     JZ search_init       ; Neustart bei 'G'
     CMP AL, start_key2
     JZ search_init       ; Neustart bei 'E'
-    JMP wait_for_plus    ; Ansonsten weiter warten
+    JMP wait_for_input    ; Ansonsten weiter warten
 
 continue_search:
     ; Nächsten Wert suchen
@@ -97,7 +92,7 @@ search_not_found:
     MOV AH, 2
     MOV DL, 3
     INT 6
-    JMP main
+    JMP check_start
 
 input_value DB 0 ; Wert der Eingabe/Suche
 end_string DB "----", 0
