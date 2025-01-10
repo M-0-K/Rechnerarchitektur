@@ -8,8 +8,10 @@ dem LIFO-Prinzip
 - Stack Pointer SP zeigt auf
 Top of Stack
 ### Aufgabe 3: Wie und wozu benutzen die Befehle den Stack, wie wird er beschrieben und wie verändert sich dabei der Stackpointer 
-- CALL, RET
-- PUSH, POP
+- CALL -> 
+- RET -> springt zu rückführadresse
+- PUSH -> wort aus *source* in den Stack geschrieben
+- POP -> liest wort aus stack und schreibt nach *dest*
 
 ## Beispiel 
 
