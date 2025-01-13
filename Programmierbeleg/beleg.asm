@@ -13,6 +13,7 @@ start:
 startSearch:         ; Vorbereitung für die Suche starten
     in ax, 0        ; 8-Bit-Suchwert einlesen
     mov [SearchValue], ax ; Suchwert im Speicher ablegen
+    call showSearchValue
     mov bx, 0h      ; Index für die Suche auf 0 setzen
 search:              ; Suche ausführen (ohne erneute Vorbereitung)
     mov dl, [bx]    ; Wert aus Speicher lesen
@@ -42,13 +43,11 @@ notFound:
 
 showAddress:
     push ax         ; Register sichern
-    push bx
     push dx
     mov ah, 3       ; Ausgabe vorbereiten
     mov dl, 3       ; rechte Start Stellen setzen
     int 6           ; Adresse anzeigen
     pop dx          ; Register wiederherstellen
-    pop bx
     pop ax
     ret             ; Rückkehr aus Unterprogramm
 
@@ -62,6 +61,19 @@ showDash:
     int 6           ; Trennstrich anzeigen
     pop dx          ; Register wiederherstellen
     pop bx
+    pop ax
+    ret             ; Rückkehr aus Unterprogramm
+
+showSearchValue:
+    push ax         ; Register sichern
+    push bx
+    push dx
+    mov bx, [SearchValue]
+    mov ah, 3       ; Ausgabe vorbereiten
+    mov dl, 7       ; rechte Start Stellen setzen
+    int 6           ; Adresse anzeigen
+    pop dx          ; Register wiederherstellen
+        pop bx
     pop ax
     ret             ; Rückkehr aus Unterprogramm
 
