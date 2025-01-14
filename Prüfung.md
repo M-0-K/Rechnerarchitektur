@@ -69,3 +69,5 @@ Am 27. Januar, 16:00 Uhr bis 17:30 Uhr
 - Binäre Logik
 - Betriebssysteme Vokabular
 - Grundlagen 8086 (siehe Befehlsliste etc.)
+- Programmierung mit 8086
+  - Variablen und Speicherbereiche deklarieren
