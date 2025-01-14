@@ -43,3 +43,16 @@ Am 27. Januar, 16:00 Uhr bis 17:30 Uhr
 - Interruptsystem
   - Aufgaben
   - Aufbau/Ablauf ISR
+- Leistungsbewertung
+  - CPI, Taktzeit, etc.
+- Architekturänderungen
+  - Pipelining
+  - RISC
+    - Grundlagen 
+    - Name
+  - Superskalare Prozessoren
+    - Grundlagen, mehr nicht
+- Speicher
+  - Grundaufbau und Funktion, mehr nicht
+- Cache
+  - Funktionsgrundlage
