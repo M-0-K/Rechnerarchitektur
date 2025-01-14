@@ -1,0 +1,38 @@
+# Prüfung
+## Grundlegende Informationen:
+Am 27. Januar, 16:00 Uhr bis 17:30 Uhr
+
+## Zugelassene Hilfsmittel:
+- _Kein_ Taschenrechner
+- Befehlsliste 8086
+- Assemblerprogrammierung mit dem SBC
+- 1 A4 Blatt beidseitig handschriftlich
+
+## Themenübersicht:
+- Grundprinzip der Datenverarbeitung: Begriffe sollte Klar sein
+- Rechnersystem nach Neumann
+  - Aufbau
+  - Vor-/Nachteile
+  - Zyklus
+- Arbeitsprinzipien
+  - Master-Slave und Interrupt
+- Speicher Aufbau
+  - Little/Big Endian
+  - Begriffe
+- I/O-Ports Grundlagen
+  - Getrennte Adressierung
+- CPU Aufbau
+  - Register
+    - Typen
+  - ALU
+    - Flags
+  - Befehlssatz
+    - Gruppen
+    - Aufbau Befehl
+  - Adressierungsarten
+    - Implizit
+    - Unmittelbar
+    - Direkt
+    - Indirekt
+    - Relativ
+- 
