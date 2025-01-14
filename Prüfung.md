@@ -61,3 +61,11 @@ Am 27. Januar, 16:00 Uhr bis 17:30 Uhr
   - Mittlere Speicherzugriffszeit bewerten können (Berechnung)
   - Klassifikation nach Flynn Grundlagen
   - MIMD
+ 
+## Zusammenfassung vom Beierlein
+### Vorkenntnisse
+- Binär in Hex
+- Datentypen inklusive Signed
+- Binäre Logik
+- Betriebssysteme Vokabular
+- Grundlagen 8086 (siehe Befehlsliste etc.)
