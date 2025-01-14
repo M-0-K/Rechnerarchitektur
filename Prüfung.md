@@ -56,3 +56,8 @@ Am 27. Januar, 16:00 Uhr bis 17:30 Uhr
   - Grundaufbau und Funktion, mehr nicht
 - Cache
   - Funktionsgrundlage
+  - Aufbau
+  - eigentlich alles davon
+  - Mittlere Speicherzugriffszeit bewerten können (Berechnung)
+  - Klassifikation nach Flynn Grundlagen
+  - MIMD
