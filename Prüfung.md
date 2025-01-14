@@ -29,10 +29,17 @@ Am 27. Januar, 16:00 Uhr bis 17:30 Uhr
   - Befehlssatz
     - Gruppen
     - Aufbau Befehl
-  - Adressierungsarten
-    - Implizit
-    - Unmittelbar
-    - Direkt
-    - Indirekt
-    - Relativ
-- 
+- Adressierungsarten
+  - Implizit
+  - Unmittelbar
+  - Direkt
+  - Indirekt
+  - Relativ
+- Sprünge
+  - (Kontrollstrukturen)
+- Stack
+  - Stackframe
+- Unterprogramme
+- Interruptsystem
+  - Aufgaben
+  - Aufbau/Ablauf ISR
